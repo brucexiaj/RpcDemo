@@ -1,5 +1,6 @@
 package com.wq.share.service.impl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.wq.share.common.BaseDto;
 import com.wq.share.common.BaseRequestDto;
 import com.wq.share.common.BaseResponseDto;
@@ -23,14 +24,13 @@ public class ItemDetailService implements IService {
     public BaseResponseDto<ItemDetailResponseDto> handle(String requestData) {
 
         //1 反序列化
-        BaseRequestDto<ItemDetailRequestDto> requestDto = BaseDto.fromJson(requestData, BaseRequestDto.class);
+        BaseRequestDto<ItemDetailRequestDto> requestDto = BaseDto.fromJson(requestData, new TypeReference<BaseRequestDto<ItemDetailRequestDto>>(){});
         BaseResponseDto responseDto = new BaseResponseDto();
         //2 TODO 检验
 
         //3 调用远程接口
         ItemDetailRequestDto req = requestDto.getOperation();
-        ItemDetailResponseDto resp = itemRemoteService.getItem(req.getItemCode(),
-                requestDto.getCommon().getCompanyNo(), req.getPageSize(), req.getPageNo());
+        ItemDetailResponseDto resp = itemRemoteService.getItem(req.getItemCode(), requestDto.getCommon().getCompanyNo());
 
         responseDto.setOperation(resp);
 

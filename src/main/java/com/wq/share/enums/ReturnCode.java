@@ -12,6 +12,7 @@ public enum ReturnCode implements BaseReturnType {
 
 
     REMOTE_USER_EXCEPTION("601", "用户异常：{0}"),
+    REMOTE_ITEM_EXCEPTION("610", "商品异常：{0}"),
 
     REMOTE_EXCEPTION("998", "远程调用系统异常"),
     SYSTEM_EXCEPTION("999", "系统异常");

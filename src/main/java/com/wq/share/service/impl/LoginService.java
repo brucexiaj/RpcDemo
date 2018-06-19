@@ -7,7 +7,6 @@ import com.wq.share.common.BaseResponseDto;
 import com.wq.share.dto.request.LoginRequestDto;
 import com.wq.share.dto.response.LoginResponseDto;
 import com.wq.share.remote.UserRemoteService;
-import com.wq.share.remote.dto.AuthUserDO;
 import com.wq.share.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
