@@ -7,12 +7,14 @@ import lombok.Setter;
 @Setter
 public class LoginRequestDto extends AbstractRequestDto {
 
-     private String type;
-     private String mobileNo;
-     private String checkCode;
-     private String thirdPartyId;
+     private String type;  //mobile/wechat
+
+     private String mobileNo; //手机号
+     private String checkCode; //密码
+
+     private String thirdPartyId; //openId
      private String thirdPartyToken;
-     private String thirdPartyUserNick;
+     private String thirdPartyUserNick; //传回去
      private String thirdPartyAvtar;
 
 }

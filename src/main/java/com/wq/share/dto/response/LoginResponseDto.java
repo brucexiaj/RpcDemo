@@ -11,4 +11,6 @@ public class LoginResponseDto extends AbstractResponseDto {
     private String userNick;
     private String userAvtar;
 
+
+
 }

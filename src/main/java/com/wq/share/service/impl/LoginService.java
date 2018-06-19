@@ -1,8 +1,13 @@
 package com.wq.share.service.impl;
 
+import com.wq.share.common.BaseDto;
+import com.wq.share.common.BaseRequestDto;
 import com.wq.share.common.BaseResponseDto;
+import com.wq.share.dto.request.LoginRequestDto;
 import com.wq.share.dto.response.LoginResponseDto;
+import com.wq.share.remote.UserRemoteService;
 import com.wq.share.service.IService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,13 +17,20 @@ import org.springframework.stereotype.Service;
 public class LoginService implements IService {
 
 
+    @Autowired
+    private UserRemoteService userRemoteService;
+
+
     /**
      *
      *  third_party_id 是微信用于与用户userId一一对应的字段
      *
-     * 1 如果用户属于1个公司，返回companyNo
-     * 2 如果用户属于n个公司，返回默认companyNo
-     * 3 如果用户暂时没归属，返回错误码 601
+     *  返回
+     *  a userId
+     *  b companyNo
+     *    1 如果用户属于1个公司，返回companyNo
+     *    2 如果用户属于n个公司，返回默认companyNo
+     *    3 如果用户暂时没归属，返回错误码 601
      *
      * @param requestData
      * @return
@@ -26,7 +38,15 @@ public class LoginService implements IService {
     @Override
     public BaseResponseDto<LoginResponseDto> handle(String requestData) {
 
+        //1 反序列化
+        BaseRequestDto<LoginRequestDto> requestDto = BaseDto.fromJson(requestData, BaseRequestDto.class);
+        BaseResponseDto responseDto = new BaseResponseDto();
 
-        return null;
+        //远程调用ERP后台，获取用户
+        LoginRequestDto req = requestDto.getOperation();
+        LoginResponseDto resp = userRemoteService.getUserInfo(req);
+        responseDto.setOperation(resp);
+
+        return responseDto;
     }
 }

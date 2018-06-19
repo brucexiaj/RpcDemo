@@ -24,7 +24,7 @@ public class TestService implements IService {
         result.put("testKey", "testValue");
         responseDto.setOperation(result);
 
-        responseDto.getCommon().setCookie(requestDto.getCommon().getCookie());
+//        responseDto.getCommon().setCookie(requestDto.getCommon().getCookie());
         return responseDto;
     }
 }
