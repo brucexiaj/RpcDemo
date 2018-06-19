@@ -45,11 +45,7 @@ public class LoginService implements IService {
 
         //远程调用ERP后台，获取用户
         LoginRequestDto req = requestDto.getOperation();
-        AuthUserDO userDO = userRemoteService.getUserInfo(req);
-        LoginResponseDto resp = new LoginResponseDto();
-        resp.setCompanyNo(userDO.getCompanyNo());
-        resp.setUserNick(userDO.getName());
-        resp.setUserId(userDO.getUserNo());
+        LoginResponseDto resp  = userRemoteService.getUserInfo(req);
         responseDto.setOperation(resp);
 
         return responseDto;
