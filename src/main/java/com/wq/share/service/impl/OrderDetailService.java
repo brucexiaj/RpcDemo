@@ -5,6 +5,9 @@ import com.wq.share.dto.response.OrderDetailResponseDto;
 import com.wq.share.service.IService;
 import org.springframework.stereotype.Service;
 
+/**
+ * 订单详情页
+ */
 @Service("wq.wangqin.orderDetail")
 public class OrderDetailService implements IService {
     @Override

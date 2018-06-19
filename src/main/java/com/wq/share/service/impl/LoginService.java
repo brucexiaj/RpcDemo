@@ -5,6 +5,9 @@ import com.wq.share.dto.response.LoginResponseDto;
 import com.wq.share.service.IService;
 import org.springframework.stereotype.Service;
 
+/**
+ * 登录
+ */
 @Service("wq.wangqin.login")
 public class LoginService implements IService {
 

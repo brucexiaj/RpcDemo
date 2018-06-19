@@ -5,6 +5,9 @@ import com.wq.share.dto.response.GoodsShareResponseDto;
 import com.wq.share.service.IService;
 import org.springframework.stereotype.Service;
 
+/**
+ * 分享
+ */
 @Service("wq.wangqin.share")
 public class GoodsShareService implements IService{
 
