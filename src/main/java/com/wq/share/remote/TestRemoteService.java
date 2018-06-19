@@ -22,6 +22,8 @@ public class TestRemoteService {
         log.info(String.format("httpStatus: %s, response body: %s", httpStatus.value(), body));
         return entity.getBody();
     }
+    
+    
 
 
 }
