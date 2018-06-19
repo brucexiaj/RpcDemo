@@ -1,20 +1,20 @@
-package com.wq.share.dto.response.entity;
+package com.wq.share.dto.response;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
 import java.util.List;
 
-@Getter
 @Setter
-public class SkuEntity implements Serializable {
+@Getter
+public class ItemDetailResponseDto extends AbstractResponseDto {
 
-    private String skuId;
+    private String title;
+    private String itemCode;
+    private String itemDesc;
     private String price;
     private String originPrice;
     private String sharePrice;
-    private String itemDesc;
     private List<String> imgList;
 
 }

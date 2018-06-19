@@ -9,9 +9,7 @@ import java.io.Serializable;
 @Setter
 public  abstract class AbstractRequestDto implements Serializable {
     private String method;
-    private String userId;
-    private String companyNo;
-
+    
     private String pageSize;
     private String pageNo;
 

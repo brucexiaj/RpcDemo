@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class GoodsSearchRequestDto extends AbstractRequestDto {
+public class ItemSearchRequestDto extends AbstractRequestDto {
 
     private String keyWord;
 

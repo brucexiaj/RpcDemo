@@ -17,12 +17,12 @@ public class BaseResponseDto<T> {
 
     private T operation;
 
-    private BaseResponseDto.Common common;
+    private Common common = new Common();
 
     @Getter
     @Setter
     public static class Common{
-        private String status;
+        private String status = ReturnCode.SUCCESS.getCode();
         private String message;
         private String cookie;
     }

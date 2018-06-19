@@ -8,8 +8,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class StartUpResponseDto extends AbstractResponseDto {
+public class ItemSearchResponseDto extends AbstractResponseDto{
 
-   private List<ItemEntity> itemList;
+    private List<ItemEntity> itemList;
 
 }

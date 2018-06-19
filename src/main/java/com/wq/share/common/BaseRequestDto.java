@@ -24,14 +24,16 @@ public class BaseRequestDto<T> {
     @Setter
     public static class Common{
         private String cookie;
-        private String product_id;
+        private String productId;
         private String channel;
-        private String push_token;
+        private String pushToken;
         private String ua;
         private String time;
-        private String user_id;
-        private String product_version;
+        private String userId;
+        private String productVersion;
         private String idfa;
+        private String companyNo;
+
     }
 
 

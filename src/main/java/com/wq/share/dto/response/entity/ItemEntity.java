@@ -8,9 +8,9 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class GoodsEntity implements Serializable {
+public class ItemEntity implements Serializable {
     private String title;
-    private String goodsId;
+    private String itemCode;
     private String price;
     private String originPrice;
     private String imgUrl;

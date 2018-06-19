@@ -16,24 +16,15 @@ public class TestService implements IService {
     @Override
     public BaseResponseDto handle(String requestData) {
 
-        BaseResponseDto responseDto = new BaseResponseDto();
-
         BaseRequestDto<TestRequstDto> requestDto = BaseDto.fromJson(requestData, BaseRequestDto.class);
+        BaseResponseDto responseDto = new BaseResponseDto();
 
         //build default response data;
         Map<String, String> result = new HashMap<>();
         result.put("testKey", "testValue");
-
-        //build default response common data
-        BaseResponseDto.Common common = new BaseResponseDto.Common();
-        common.setStatus(ReturnCode.SUCCESS.getCode());
-        common.setMessage(ReturnCode.SUCCESS.getMessage());
-        common.setCookie(requestDto.getCommon().getCookie());
-
-        responseDto.setCommon(common);
         responseDto.setOperation(result);
 
-
+        responseDto.getCommon().setCookie(requestDto.getCommon().getCookie());
         return responseDto;
     }
 }

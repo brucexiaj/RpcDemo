@@ -5,8 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GoodsDetailRequestDto extends AbstractRequestDto {
+public class ItemShareRequestDto extends AbstractRequestDto {
 
-    private String goodsId;
+    private String itemCode;
 
 }
