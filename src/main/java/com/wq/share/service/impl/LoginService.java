@@ -6,6 +6,7 @@ import com.wq.share.common.BaseResponseDto;
 import com.wq.share.dto.request.LoginRequestDto;
 import com.wq.share.dto.response.LoginResponseDto;
 import com.wq.share.remote.UserRemoteService;
+import com.wq.share.remote.dto.AuthUserDO;
 import com.wq.share.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,11 @@ public class LoginService implements IService {
 
         //远程调用ERP后台，获取用户
         LoginRequestDto req = requestDto.getOperation();
-        LoginResponseDto resp = userRemoteService.getUserInfo(req);
+        AuthUserDO userDO = userRemoteService.getUserInfo(req);
+        LoginResponseDto resp = new LoginResponseDto();
+        resp.setCompanyNo(userDO.getCompanyNo());
+        resp.setUserNick(userDO.getName());
+        resp.setUserId(userDO.getUserNo());
         responseDto.setOperation(resp);
 
         return responseDto;
