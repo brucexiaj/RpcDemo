@@ -10,6 +10,9 @@ public enum ReturnCode implements BaseReturnType {
     ILLEGAL_ARG_EXCEPTION("400", "请求参数异常"),
     NOT_FOUND_EXCEPTION("404", "请求接口不存在"),
 
+
+    REMOTE_USER_EXCEPTION("601", "用户异常：{0}"),
+
     REMOTE_EXCEPTION("998", "远程调用系统异常"),
     SYSTEM_EXCEPTION("999", "系统异常");
     private String code;

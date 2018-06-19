@@ -1,5 +1,6 @@
 package com.wq.share.service.impl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.wq.share.common.BaseDto;
 import com.wq.share.common.BaseRequestDto;
 import com.wq.share.common.BaseResponseDto;
@@ -40,7 +41,7 @@ public class LoginService implements IService {
     public BaseResponseDto<LoginResponseDto> handle(String requestData) {
 
         //1 反序列化
-        BaseRequestDto<LoginRequestDto> requestDto = BaseDto.fromJson(requestData, BaseRequestDto.class);
+        BaseRequestDto<LoginRequestDto> requestDto = BaseDto.fromJson(requestData, new TypeReference<BaseRequestDto<LoginRequestDto>>(){});
         BaseResponseDto responseDto = new BaseResponseDto();
 
         //远程调用ERP后台，获取用户
