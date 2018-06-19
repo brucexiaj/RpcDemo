@@ -24,7 +24,7 @@ public class BaseResponseDto<T> {
     public static class Common{
         private String status = ReturnCode.SUCCESS.getCode();
         private String message;
-        private String cookie;
+//        private String cookie;
     }
 
     public static BaseResponseDto<String> buildError(ApplicationException ae){
