@@ -1,5 +1,6 @@
 package com.wq.share.service.impl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.wq.share.common.BaseDto;
 import com.wq.share.common.BaseRequestDto;
 import com.wq.share.common.BaseResponseDto;
@@ -23,7 +24,7 @@ public class ItemShareService implements IService{
     public BaseResponseDto<ItemShareResponseDto> handle(String requestData) {
 
         //1 反序列化
-        BaseRequestDto<ItemShareRequestDto> requestDto = BaseDto.fromJson(requestData, BaseRequestDto.class);
+        BaseRequestDto<ItemShareRequestDto> requestDto = BaseDto.fromJson(requestData, new TypeReference<BaseRequestDto<ItemShareRequestDto>>(){});
         BaseResponseDto responseDto = new BaseResponseDto();
         //2 TODO 检验
 
