@@ -1,5 +1,6 @@
 package com.wq.share.service.impl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.wq.share.common.BaseDto;
 import com.wq.share.common.BaseRequestDto;
 import com.wq.share.common.BaseResponseDto;
@@ -22,7 +23,7 @@ public class OrderDetailService implements IService {
     @Override
     public BaseResponseDto<OrderDetailResponseDto> handle(String requestData) {
         //1 反序列化
-        BaseRequestDto<OrderDetailRequestDto> requestDto = BaseDto.fromJson(requestData, BaseRequestDto.class);
+        BaseRequestDto<OrderDetailRequestDto> requestDto = BaseDto.fromJson(requestData, new TypeReference<BaseRequestDto<OrderDetailRequestDto>>(){});
         BaseResponseDto responseDto = new BaseResponseDto();
         //2 TODO 检验
 
