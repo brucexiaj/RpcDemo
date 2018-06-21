@@ -14,29 +14,12 @@ import com.wq.share.service.impl.LoginService;
 @Controller
 public class TestController {
 
-    @Autowired
-    private TestRemoteService testRemoteService;
-    
-    @Autowired
-    private LoginService loginService;
-
     @RequestMapping("/api/test")
     @ResponseBody
-    public String test(){
+    public String test() {
         Map<String, String> result = new HashMap<>();
-        result.put("testKey","testValue");
+        result.put("testKey", "testValue");
         return BaseDto.toString(result);
     }
-
-    @RequestMapping("/api/remote/test")
-    @ResponseBody
-    public String mockRemoteCall(){
-        String result = testRemoteService.remoteCall();
-        return result;
-    }
-    
-
-
-
 
 }
