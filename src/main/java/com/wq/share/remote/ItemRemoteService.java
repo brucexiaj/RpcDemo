@@ -21,17 +21,12 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class ItemRemoteService {
-
-    public final static String ITEM_REMOTE_URI = "http://localhost:8100";
-
-    @Autowired
-    private RestTemplate restTemplate;
+public class ItemRemoteService extends AbstractRemoteService{
 
     public StartUpResponseDto getStartUpItems(String type, String companyNo, String pageSize, String pageNo){
         log.info("==call remote url /api/items/startup ");
         String url = String.format("%s/api/items/startup?type=%s&companyNo=%s&pageSize=%s&pageNo=%s",
-                ITEM_REMOTE_URI, type, companyNo, pageSize, pageNo);
+                ERP_REMOTE_URI, type, companyNo, pageSize, pageNo);
         ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
         log.info("==call remote url /api/items/startup, resp:{} ", entity);
 
@@ -54,7 +49,7 @@ public class ItemRemoteService {
     public ItemSearchResponseDto getSearchItems(String keyWord, String companyNo, String pageSize, String pageNo) {
         log.info("==call remote url /api/items/search ");
         String url = String.format("%s/api/items/search?keyword=%s&companyNo=%s&pageSize=%s&pageNo=%s",
-                ITEM_REMOTE_URI, keyWord, companyNo, pageSize, pageNo);
+                ERP_REMOTE_URI, keyWord, companyNo, pageSize, pageNo);
         ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
         log.info("==call remote url /api/items/search, resp:{} ", entity);
 
@@ -78,7 +73,7 @@ public class ItemRemoteService {
 
         log.info("==call remote url /api/items/detail ");
         String url = String.format("%s/api/items/detail?itemCode=%s&companyNo=%s",
-                ITEM_REMOTE_URI, itemCode, companyNo);
+                ERP_REMOTE_URI, itemCode, companyNo);
         ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
         log.info("==call remote url /api/items/detail, resp:{} ", entity);
 
@@ -98,7 +93,7 @@ public class ItemRemoteService {
     public ItemShareResponseDto getShareItemInfo(String itemCode, String companyNo, String userId) {
         log.info("==call remote url /api/items/share ");
         String url = String.format("%s/api/items/share?itemCode=%s&companyNo=%s&userId=%s",
-                ITEM_REMOTE_URI, itemCode, companyNo, userId);
+                ERP_REMOTE_URI, itemCode, companyNo, userId);
         ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
         log.info("==call remote url /api/items/share, resp:{} ", entity);
 

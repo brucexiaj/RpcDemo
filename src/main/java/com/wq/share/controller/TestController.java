@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wq.share.common.BaseDto;
-import com.wq.share.remote.TestRemoteService;
 import com.wq.share.service.impl.LoginService;
 
 @Controller

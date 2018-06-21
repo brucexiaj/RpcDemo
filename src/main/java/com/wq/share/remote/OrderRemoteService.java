@@ -19,18 +19,13 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class OrderRemoteService {
-
-    public final static String ORDER_REMOTE_URI = "http://localhost:8100";
-
-    @Autowired
-    private RestTemplate restTemplate;
-
+public class OrderRemoteService extends AbstractRemoteService{
+    
     public MyHomeResponseDto getMyHomeList(String userId, String pageSize, String pageNo){
 
         log.info("==call remote url /api/orders/myHome ");
         String url = String.format("%s/api/orders/myHome?userId=%s&pageSize=%s&pageNo=%s",
-                ORDER_REMOTE_URI, userId, pageSize, pageNo);
+                ERP_REMOTE_URI, userId, pageSize, pageNo);
         ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
         log.info("==call remote url /api/orders/myHome, resp:{} ", entity);
         if (entity.getStatusCode() != HttpStatus.OK){
@@ -51,7 +46,7 @@ public class OrderRemoteService {
     public OrderDetailResponseDto getOrderDetailList(String userId, String time, String pageSize, String pageNo){
         log.info("==call remote url /api/orders/detail ");
         String url = String.format("%s/api/orders/detail?userId=%s&time=%s&pageSize=%s&pageNo=%s",
-                ORDER_REMOTE_URI, userId, time, pageSize, pageNo);
+                ERP_REMOTE_URI, userId, time, pageSize, pageNo);
         ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
         log.info("==call remote url /api/orders/detail, resp:{} ", entity);
         if (entity.getStatusCode() != HttpStatus.OK){
