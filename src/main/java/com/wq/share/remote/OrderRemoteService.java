@@ -15,12 +15,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Slf4j
 public class OrderRemoteService extends AbstractRemoteService{
-    
+
     public MyHomeResponseDto getMyHomeList(String userId, String pageSize, String pageNo){
 
         log.info("==call remote url /api/orders/myHome ");
@@ -32,14 +33,16 @@ public class OrderRemoteService extends AbstractRemoteService{
             throw new ApplicationException(ReturnCode.REMOTE_EXCEPTION);
         }
         String remoteResp = entity.getBody();
-        JsonResult<List<OrderEntity>> jsonResult = BaseDto.fromJson(remoteResp, new TypeReference<JsonResult<List<OrderEntity>>>() {});
+        JsonResult<MyHomeResponseDto> jsonResult = BaseDto.fromJson(remoteResp, new TypeReference<JsonResult<MyHomeResponseDto>>() {});
         if (!jsonResult.isSuccess()){
             throw new ApplicationException(ReturnCode.REMOTE_ITEM_EXCEPTION, jsonResult.getMsg());
         }
+        MyHomeResponseDto dto = jsonResult.getData();
         MyHomeResponseDto resp = new MyHomeResponseDto();
         resp.setPageNo(pageNo);
         resp.setPageSize(pageSize);
-        resp.setOrderList(jsonResult.getData());
+        resp.setCommission(dto.getCommission());
+        resp.setOrderList(dto.getOrderList());
         return resp;
     }
 
