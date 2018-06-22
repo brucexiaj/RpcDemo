@@ -25,8 +25,8 @@ public class UserRemoteService extends AbstractRemoteService{
 
     public LoginResponseDto getUserInfo(LoginRequestDto req){
         log.info("==call remote url /share/user/login ");
-    	String url = String.format("%s/share/user/login?type=%s&mobileNo=%s&checkCode=%s&thirdPartyId=%s&thirdPartyAvtar=%s",
-                ERP_REMOTE_URI, req.getType(), req.getMobileNo(), req.getCheckCode(), req.getThirdPartyId(), req.getThirdPartyAvtar());
+    	String url = String.format("%s/share/user/login?type=%s&mobileNo=%s&checkCode=%s&thirdPartyId=%s&thirdPartyUnionid=%s&thirdPartyAvtar=%s",
+                ERP_REMOTE_URI, req.getType(), req.getMobileNo(), req.getCheckCode(), req.getThirdPartyId(), req.getThirdPartyUnionid(), req.getThirdPartyAvtar());
 
         ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
         log.info("==call remote url /api/share/user/login, result : {}", BaseDto.toString(entity));
