@@ -7,7 +7,6 @@ import com.wq.share.common.BaseResponseDto;
 import com.wq.share.dto.request.MyHomeRequestDto;
 import com.wq.share.dto.response.MyHomeResponseDto;
 import com.wq.share.remote.OrderRemoteService;
-import com.wq.share.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,26 +14,29 @@ import org.springframework.stereotype.Service;
  * 我的页面
  */
 @Service("wq.wangqin.myHome")
-public class MyHomeService implements IService {
+public class MyHomeService extends AbstractService<MyHomeRequestDto, MyHomeResponseDto> {
 
     @Autowired
     private OrderRemoteService orderRemoteService;
 
     @Override
-    public BaseResponseDto<MyHomeResponseDto> handle(String requestData) {
-
-        //1 反序列化
-        BaseRequestDto<MyHomeRequestDto> requestDto = BaseDto.fromJson(requestData, new TypeReference<BaseRequestDto<MyHomeRequestDto>>(){});
+    protected BaseResponseDto<MyHomeResponseDto> exec(BaseRequestDto<MyHomeRequestDto> requestDto) {
         BaseResponseDto responseDto = new BaseResponseDto();
-        //2 TODO 检验
-
-        //3 调用远程接口
         MyHomeRequestDto req = requestDto.getOperation();
         MyHomeResponseDto resp = orderRemoteService.getMyHomeList(requestDto.getCommon().getUserId(),
-                                                                  req.getPageSize(), req.getPageNo());
+                req.getPageSize(), req.getPageNo());
 
         responseDto.setOperation(resp);
-
         return responseDto;
+    }
+
+    @Override
+    protected BaseRequestDto<MyHomeRequestDto> parse(String requestData) {
+        return BaseDto.fromJson(requestData, new TypeReference<BaseRequestDto<MyHomeRequestDto>>(){});
+    }
+
+    @Override
+    protected void validate(BaseRequestDto<MyHomeRequestDto> requestDto) {
+        //TODO
     }
 }
