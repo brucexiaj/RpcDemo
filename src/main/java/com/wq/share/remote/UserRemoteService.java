@@ -13,6 +13,9 @@ import com.wq.share.remote.dto.AuthUserDO;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @Slf4j
 public class UserRemoteService extends AbstractRemoteService{
@@ -37,6 +40,7 @@ public class UserRemoteService extends AbstractRemoteService{
         resp.setUserNick(authUserDO.getName());
         resp.setUserId(authUserDO.getUserNo());
         resp.setUserAvtar(HTTP_IMG_HAIHU_COM_WQ_LOGO_JPG);
+
         return resp;
     }
 
