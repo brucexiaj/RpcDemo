@@ -43,7 +43,7 @@ public abstract class AbstractRemoteService {
         headers.setContentType(type);
         headers.add("Accept", MediaType.APPLICATION_JSON.toString());
         HttpEntity<String> formEntity = new HttpEntity<>(params, headers);
-        log.info("==call remote url {} ", url);
+        log.info("==call remote url {}, params: {} ", url, params);
         ResponseEntity<String> entity = restTemplate.postForEntity(url, formEntity, String.class);
         log.info("==call remote url {}, result : {}", url , BaseDto.toString(entity));
         if (entity.getStatusCode() != HttpStatus.OK){
