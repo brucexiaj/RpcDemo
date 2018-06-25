@@ -31,7 +31,7 @@ public class ShareApiController {
 
         try {
             Request req = parseRequest(data);
-            methodApi = req.getMethodApi().trim();
+            methodApi = req.getMethodApi();
             requestData = req.getRequestData();
 
             log.info("===> receive request on {}, request data is {}", methodApi, requestData);
@@ -114,6 +114,15 @@ public class ShareApiController {
     public static class Request{
         String methodApi;
         String requestData;
+
+        public String getMethodApi(){
+            return StringUtils.isBlank(this.methodApi)? "": this.methodApi.trim();
+        }
+
+        public String getRequestData(){
+            return StringUtils.isBlank(this.requestData)? "": this.requestData.trim();
+        }
+
     }
 
 }
