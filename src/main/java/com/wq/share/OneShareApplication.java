@@ -13,11 +13,11 @@ public class OneShareApplication {
 	public static void main(String[] args) {
 
 		try {
-			log.info("=== share-api begin to start====");
+			log.info("=== oneShare begin to start====");
 			SpringApplication.run(OneShareApplication.class, args);
-			log.info("=== share-api start successfully====");
+			log.info("=== oneShare start successfully====");
 		} catch (Exception e) {
-			log.error("==== share-api start with exception====", e);
+			log.error("==== oneShare start with exception====", e);
 		}
 	}
 }

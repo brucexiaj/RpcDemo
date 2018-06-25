@@ -24,64 +24,52 @@ import java.util.List;
 public class ItemRemoteService extends AbstractRemoteService{
 
     public StartUpResponseDto getStartUpItems(String type, String companyNo, String pageSize, String pageNo){
-        log.info("==call remote url /api/items/startup ");
         String url = String.format("%s/api/items/startup?type=%s&companyNo=%s&pageSize=%s&pageNo=%s",
-                ERP_REMOTE_URI, type, companyNo, pageSize, pageNo);
-        ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
-        log.info("==call remote url /api/items/startup, resp:{} ", entity);
+                getErpRemoteUri(), type, companyNo, pageSize, pageNo);
 
-        if (entity.getStatusCode() != HttpStatus.OK){
-            throw new ApplicationException(ReturnCode.REMOTE_EXCEPTION);
-        }
+        String remoteResp = remoteGetCall(url);
 
-        String remoteResp = entity.getBody();
         JsonResult<List<ItemEntity>> jsonResult = BaseDto.fromJson(remoteResp, new TypeReference<JsonResult<List<ItemEntity>>>() {});
         if (!jsonResult.isSuccess()){
             throw new ApplicationException(ReturnCode.REMOTE_ITEM_EXCEPTION, jsonResult.getMsg());
         }
+
         StartUpResponseDto resp = new StartUpResponseDto();
         resp.setPageNo(pageNo);
         resp.setPageSize(pageSize);
         resp.setItemList(jsonResult.getData());
+
         return resp;
     }
 
     public ItemSearchResponseDto getSearchItems(String keyWord, String companyNo, String pageSize, String pageNo) {
-        log.info("==call remote url /api/items/search ");
+
         String url = String.format("%s/api/items/search?keyword=%s&companyNo=%s&pageSize=%s&pageNo=%s",
-                ERP_REMOTE_URI, keyWord, companyNo, pageSize, pageNo);
-        ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
-        log.info("==call remote url /api/items/search, resp:{} ", entity);
+                getErpRemoteUri(), keyWord, companyNo, pageSize, pageNo);
+        String remoteResp = remoteGetCall(url);
 
-        if (entity.getStatusCode() != HttpStatus.OK){
-            throw new ApplicationException(ReturnCode.REMOTE_EXCEPTION);
-        }
-
-        String remoteResp = entity.getBody();
         JsonResult<List<ItemEntity>> jsonResult = BaseDto.fromJson(remoteResp, new TypeReference<JsonResult<List<ItemEntity>>>() {});
         if (!jsonResult.isSuccess()){
             throw new ApplicationException(ReturnCode.REMOTE_ITEM_EXCEPTION, jsonResult.getMsg());
         }
+
         ItemSearchResponseDto resp = new ItemSearchResponseDto();
         resp.setPageNo(pageNo);
         resp.setPageSize(pageSize);
         resp.setItemList(jsonResult.getData());
+
         return resp;
     }
 
     public ItemDetailResponseDto getItem(String itemCode, String companyNo) {
 
-        log.info("==call remote url /api/items/detail ");
         String url = String.format("%s/api/items/detail?itemCode=%s&companyNo=%s",
-                ERP_REMOTE_URI, itemCode, companyNo);
-        ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
-        log.info("==call remote url /api/items/detail, resp:{} ", entity);
+                getErpRemoteUri(), itemCode, companyNo);
+        String remoteResp = remoteGetCall(url);
 
-        if (entity.getStatusCode() != HttpStatus.OK){
-            throw new ApplicationException(ReturnCode.REMOTE_EXCEPTION);
-        }
-        String remoteResp = entity.getBody();
-        JsonResult<ItemDetailResponseDto> jsonResult = BaseDto.fromJson(remoteResp, new TypeReference<JsonResult<ItemDetailResponseDto>>() {});
+        JsonResult<ItemDetailResponseDto> jsonResult = BaseDto.fromJson(remoteResp,
+                new TypeReference<JsonResult<ItemDetailResponseDto>>() {});
+
         if (!jsonResult.isSuccess()){
             throw new ApplicationException(ReturnCode.REMOTE_ITEM_EXCEPTION, jsonResult.getMsg());
         }
@@ -91,16 +79,12 @@ public class ItemRemoteService extends AbstractRemoteService{
     }
 
     public ItemShareResponseDto getShareItemInfo(String itemCode, String companyNo, String userId) {
-        log.info("==call remote url /api/items/share ");
-        String url = String.format("%s/api/items/share?itemCode=%s&companyNo=%s&userId=%s",
-                ERP_REMOTE_URI, itemCode, companyNo, userId);
-        ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
-        log.info("==call remote url /api/items/share, resp:{} ", entity);
 
-        if (entity.getStatusCode() != HttpStatus.OK){
-            throw new ApplicationException(ReturnCode.REMOTE_EXCEPTION);
-        }
-        String remoteResp = entity.getBody();
+        String url = String.format("%s/api/items/share?itemCode=%s&companyNo=%s&userId=%s",
+                getErpRemoteUri(), itemCode, companyNo, userId);
+
+        String remoteResp = remoteGetCall(url);
+
         JsonResult<ItemShareResponseDto> jsonResult = BaseDto.fromJson(remoteResp, new TypeReference<JsonResult<ItemShareResponseDto>>() {});
         if (!jsonResult.isSuccess()){
             throw new ApplicationException(ReturnCode.REMOTE_ITEM_EXCEPTION, jsonResult.getMsg());
