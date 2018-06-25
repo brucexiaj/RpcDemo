@@ -5,7 +5,6 @@ import com.wq.share.common.BaseDto;
 import com.wq.share.common.exception.ApplicationException;
 import com.wq.share.enums.ReturnCode;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

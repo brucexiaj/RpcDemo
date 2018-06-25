@@ -8,8 +8,6 @@ import com.wq.share.dto.response.OrderDetailResponseDto;
 import com.wq.share.enums.ReturnCode;
 import com.wq.share.remote.dto.JsonResult;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
