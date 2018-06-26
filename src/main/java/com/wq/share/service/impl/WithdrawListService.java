@@ -17,6 +17,8 @@ public class WithdrawListService extends AbstractService<WithdrawListRequestDto,
         //TODO implement on the way
         BaseResponseDto<WithdrawListResponse> responseDto = new BaseResponseDto<>();
         WithdrawListResponse response = new WithdrawListResponse();
+        response.setPageNo(requestDto.getOperation().getPageNo());
+        response.setPageSize(requestDto.getOperation().getPageSize());
         responseDto.setOperation(response);
         return responseDto;
     }
