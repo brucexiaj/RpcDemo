@@ -16,8 +16,8 @@ public class WithdrawRequestService extends AbstractService<WithdrawReqRequestDt
     protected BaseResponseDto<WithdrawReqResponse> exec(BaseRequestDto<WithdrawReqRequestDto> requestDto) {
         BaseResponseDto dto = new BaseResponseDto();
         WithdrawReqResponse resp = new WithdrawReqResponse();
-        resp.setStatus("100");
-        resp.setMessage("提现成功");
+        resp.setWithdrawStatus("100");
+        resp.setWithdrawMessage("提现成功");
         dto.setOperation(resp);
         return dto;
     }

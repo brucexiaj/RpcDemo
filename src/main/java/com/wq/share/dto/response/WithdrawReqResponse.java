@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class WithdrawReqResponse extends AbstractResponseDto {
 
-    private String status;
-    private String message;
+    private String withdrawStatus;
+    private String withdrawMessage;
 
 }
