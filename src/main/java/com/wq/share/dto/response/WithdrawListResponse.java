@@ -10,9 +10,9 @@ import java.util.List;
 @Setter
 public class WithdrawListResponse extends AbstractResponseDto {
 
-    private String allAmount ="0";
-    private String availableAmount = "0";
-    private String doneAmount = "0";
+    private String allAmount ="0.00";
+    private String availableAmount = "0.00";
+    private String doneAmount = "0.00";
     private List<WithdrawEntity> withdrawList = new ArrayList<>();
 
     @Getter
