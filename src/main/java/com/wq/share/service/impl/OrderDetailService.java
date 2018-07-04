@@ -26,6 +26,7 @@ public class OrderDetailService extends AbstractService<OrderDetailRequestDto, O
         OrderDetailRequestDto req = requestDto.getOperation();
         OrderDetailResponseDto resp = orderRemoteService.getOrderDetailList(requestDto.getCommon().getUserId(),
                 req.getTime(), req.getPageSize(), req.getPageNo());
+        responseDto.setOperation(resp);
         return responseDto;
     }
 
