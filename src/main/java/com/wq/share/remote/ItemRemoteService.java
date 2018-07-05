@@ -21,7 +21,7 @@ public class ItemRemoteService extends AbstractRemoteService{
 
     public StartUpResponseDto getStartUpItems(String type, String companyNo, String pageSize, String pageNo){
         String url = String.format("%s/api/items/startup?type=%s&companyNo=%s&pageSize=%s&pageNo=%s",
-                getErpRemoteUri(), type, companyNo, pageSize, pageNo);
+                getErpRemoteUri(), type, companyNo, pageSize, 1); //TODO
 
         String remoteResp = remoteGetCall(url);
 

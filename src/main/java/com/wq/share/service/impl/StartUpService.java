@@ -25,7 +25,7 @@ public class StartUpService extends AbstractService<StartUpRequestDto,StartUpRes
         BaseResponseDto responseDto = new BaseResponseDto();
         StartUpRequestDto req = requestDto.getOperation();
         StartUpResponseDto resp = itemRemoteService.getStartUpItems(req.getType(),
-                requestDto.getCommon().getCompanyNo(), req.getPageSize(), "1"); //TODO
+                requestDto.getCommon().getCompanyNo(), req.getPageSize(), req.getPageNo());
 
         responseDto.setOperation(resp);
         return responseDto;
