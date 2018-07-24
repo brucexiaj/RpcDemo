@@ -11,6 +11,7 @@ import com.wq.share.dto.response.entity.ItemEntity;
 import com.wq.share.enums.ReturnCode;
 import com.wq.share.remote.dto.JsonResult;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +21,14 @@ import java.util.List;
 public class ItemRemoteService extends AbstractRemoteService{
 
     public StartUpResponseDto getStartUpItems(String type, String companyNo, String pageSize, String pageNo){
+
+       String _pageNo = pageNo;
+       if (StringUtils.isNotBlank(companyNo) && "YiJianFenXiang".equals(companyNo.trim()) ){
+           _pageNo = "1";
+       }
+
         String url = String.format("%s/api/items/startup?type=%s&companyNo=%s&pageSize=%s&pageNo=%s",
-                getErpRemoteUri(), type, companyNo, pageSize, 1); //TODO
+                getErpRemoteUri(), type, companyNo, pageSize, _pageNo); //TODO
 
         String remoteResp = remoteGetCall(url);
 
